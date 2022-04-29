@@ -6,10 +6,8 @@ const bcrypt = require("bcrypt");
 const { times } = require("lodash");
 
 module.exports = new (class extends controller {
- 
   async register(req, res) {
-    
-    console.log('2' , this , "2");
+    console.log("2", this, "2");
     let user = await this.User.findOne({ email: req.body.email });
     if (user) {
       return this.response({
@@ -31,7 +29,7 @@ module.exports = new (class extends controller {
       res,
       message: "the user successfully registered",
       data: _.pick(user, ["_id", "name", "email"]),
-    }); 
+    });
   }
 
   async login(req, res) {
