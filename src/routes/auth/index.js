@@ -6,14 +6,14 @@ router.post(
   "/register",
   validator.registerValidator(),
   controller.validate,
-  controller.register.bind(controller)
+  controller.register
 );
 
 router.post(
   "/login",
   validator.loginValidator(),
   controller.validate,
-  controller.login.bind(controller)
+  controller.login
 );
 
 module.exports = router;

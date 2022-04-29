@@ -6,26 +6,26 @@ module.exports = new class {
     return [
       check('email')
       .isEmail()
-      .withMessage('email is invalid'),
+      .withMessage('email is invalid!'),
       check('name')
       .not()
       .isEmpty()
-      .withMessage('please enter your name'),
+      .withMessage('please enter your name!'),
       check('password')
       .not()
       .isEmpty()
-      .withMessage('please your password')
+      .withMessage('please enter your password!')
     ]
   } 
   loginValidator(){
     return [
       check('email')
       .isEmail()
-      .withMessage('email is invalid'),
+      .withMessage('email is invalid!'),
       check('password')
       .not()
       .isEmpty()
-      .withMessage('please your password')
+      .withMessage('please enter your password!')
     ]
   }
 }
