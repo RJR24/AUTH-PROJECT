@@ -23,7 +23,6 @@ module.exports = class {
   }
 
   validate(req, res, next) {
-    console.log(this, "1");
     if (!this.validationBody(req, res)) {
       return;
     }
