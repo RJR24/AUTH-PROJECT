@@ -2,7 +2,7 @@ const controller = require("./../controller");
 const _ = require("lodash");
 const bcrypt = require("bcrypt");
 const config = require("config");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 const { times } = require("lodash");
 
@@ -33,6 +33,7 @@ module.exports = new (class extends controller {
   }
 
   async login(req, res) {
+    throw new Error("login failed");
     const user = await this.User.findOne({ email: req.body.email });
     if (!user) {
       return this.response({
