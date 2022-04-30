@@ -15,11 +15,13 @@
     "config": "^3.3.7",
     "debug": "^4.3.4",
     "express": "^4.18.0",
+    "express-async-errors": "^3.1.1",
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "^6.3.1",
     "mongoose-timestamp": "^0.6.0",
-    "time-stamp": "^2.2.0"
+    "time-stamp": "^2.2.0",
+    "winston": "^3.7.2"
   }
 }
