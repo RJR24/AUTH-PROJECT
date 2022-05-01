@@ -17,8 +17,24 @@ mongoose
   .connect(config.get("db.address"))
   .then(() => debug("connected to the database"))
   .catch((err) => debug("could not connected to the database!!!"));
+  
+  process.on("uncaughtException", (ex) => {
+    console.log("uncaught exception");
+    winston.error(ex.message, ex);
+  });
+  
+  process.on("unhandledRejection", (ex) => {
+    console.log("unhandled exception");
+    winston.error(ex.message, ex);
+  });
 
 winston.add(new winston.transports.File({ filename: "logfile.log" }));
+
+const p = promise.reject(new Error("somethig failed"));
+p.then(() => {
+  console.log("done");
+});
+throw new Error("khata darim outside express");
 
 app.use("/api", router);
 
