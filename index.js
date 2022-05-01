@@ -1,5 +1,4 @@
 const express = require("express");
-require("express-async-errors");
 const app = express();
 
 const mongoose = require("mongoose");
@@ -9,32 +8,9 @@ const winston = require("winston");
 
 const router = require("./src/routes/index");
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
-
-mongoose
-  .connect(config.get("db.address"))
-  .then(() => debug("connected to the database"))
-  .catch((err) => debug("could not connected to the database!!!"));
-
-process.on("uncaughtException", (ex) => {
-  console.log("uncaught exception");
-  winston.error(ex.message, ex);
-  process.exit(1);
-});
-
-process.on("unhandledRejection", (ex) => {
-  console.log("unhandled exception");
-  winston.error(ex.message, ex);
-  process.exit(1);
-});
-
-winston.add(new winston.transports.File({ filename: "logfile.log" }));
-
-// const p = promise.reject(new Error("somethig failed"));
-// p.then(() => {console.log("done") });
-// throw new Error("khata darim outside express");
+require("./startup/config")(app, express);
+require("./startup/db")();
+require("./startup/logging")();
 
 app.use("/api", router);
 
